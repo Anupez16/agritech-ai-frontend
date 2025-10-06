@@ -14,24 +14,24 @@ export default function DiseaseDetection() {
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
-    
+
     if (file) {
       // Validate file type
       if (!file.type.startsWith('image/')) {
         setError('Please select a valid image file');
         return;
       }
-      
+
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setError('File size must be less than 5MB');
         return;
       }
-      
+
       setSelectedFile(file);
       setError(null);
       setResult(null);
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -43,7 +43,7 @@ export default function DiseaseDetection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!selectedFile) {
       setError('Please select an image first');
       return;
@@ -88,7 +88,7 @@ export default function DiseaseDetection() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Upload Plant Leaf Image
               </label>
-              
+
               {!preview ? (
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 transition-colors">
                   <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
@@ -115,10 +115,12 @@ export default function DiseaseDetection() {
               ) : (
                 <div className="relative">
                   <div className="border-2 border-gray-300 rounded-lg p-4">
-                    <img
+                    <Image
                       src={preview}
                       alt="Preview"
-                      className="max-h-96 mx-auto rounded-lg"
+                      width={800}
+                      height={600}
+                      className="max-h-96 mx-auto rounded-lg object-contain"
                     />
                   </div>
                   <button
@@ -170,7 +172,7 @@ export default function DiseaseDetection() {
                 <Bug className="h-6 w-6 mr-2" />
                 Detection Result
               </h3>
-              
+
               <div className="bg-white rounded-lg p-6">
                 <div className="mb-6">
                   <p className="text-sm text-gray-600 mb-2">Detected Disease:</p>
@@ -204,7 +206,7 @@ export default function DiseaseDetection() {
                 {/* Recommendation */}
                 <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <p className="text-sm text-yellow-800">
-                    <strong>Note:</strong> This is an AI prediction. Please consult with 
+                    <strong>Note:</strong> This is an AI prediction. Please consult with
                     agricultural experts for proper diagnosis and treatment recommendations.
                   </p>
                 </div>

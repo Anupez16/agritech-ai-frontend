@@ -1,4 +1,5 @@
 import { Leaf, Github, Twitter, Mail } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="/" className="hover:text-white transition-colors">Home</a>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
               </li>
               <li>
                 <a href="/crop-recommendation" className="hover:text-white transition-colors">
