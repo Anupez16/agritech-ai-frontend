@@ -1,5 +1,5 @@
 // API configuration and utility functions
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://web-production-26984.up.railway.app';
 
 // Crop Recommendation API
 export const recommendCrop = async (data) => {
